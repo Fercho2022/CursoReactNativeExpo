@@ -8,16 +8,21 @@ interface Props{
 
     //methods
     onPress: () => void;
-    onLongPress: () => void;
+    
 
 }
-export default function FAB({ label, onPress, onLongPress, position='right' }: Props) {
+export default function FAB({ label, onPress, position='right' }: Props) {
   return (
      <Pressable 
-        style={[styles.floatingButton, 
-            position==='right' ? styles.PositionRight : styles.PositionLeft]}    
+        style={(state)=>[styles.floatingButton, 
+            position==='right' ? styles.PositionRight : styles.PositionLeft, 
+          state.pressed ? styles.PressableTrue : styles.PressableFalse
+          ] 
+          
+          }    
          onPress={onPress}
-          onLongPress={onLongPress}
+         
+          
           >
             <Text style={{color:'white',fontSize:20}}>{label}</Text>
           </Pressable>
@@ -48,5 +53,11 @@ const styles = StyleSheet.create({
       
   PositionLeft:{
     left: 30,
+  },
+  PressableTrue:{
+    opacity:0.7,
+  },
+  PressableFalse:{
+    opacity:1,
   }
 });

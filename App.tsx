@@ -10,8 +10,19 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.textHuge}>{count}</Text>
      
-      <FAB label="+1" onPress={() => setCount(count + 1)} onLongPress={() => setCount(0)} position="left"
+      <FAB 
+      label="+1"
+       onPress={() => setCount(count + 1)} 
+       
+       position="right"
        />
+       <FAB 
+      label="Reset"
+       onPress={() => setCount(0)} 
+       
+       position="left"
+       />
+       <StatusBar style="auto" />
     </View>
   );
 }
